@@ -3,6 +3,27 @@
   --bg-dark: #0d0d0d;
   --card-bg: #141414;
   --muted-text: #a0a0a0;
+  --nav-bg: #050505;
+  --section-bg: #121212;
+  --border: #222222;
+  --text: #e5e5e5;
+  --heading: #ffffff;
+  --input-text: #ffffff;
+  --button-text: #000000;
+}
+
+.light-theme {
+  --gold: #b8860b;
+  --bg-dark: #f5f5f5;
+  --card-bg: #ffffff;
+  --muted-text: #555555;
+  --nav-bg: #ffffff;
+  --section-bg: #eeeeee;
+  --border: #dddddd;
+  --text: #222222;
+  --heading: #111111;
+  --input-text: #222222;
+  --button-text: #ffffff;
 }
 
 * {
@@ -18,7 +39,7 @@ html {
 body {
   font-family: Arial, sans-serif;
   background-color: var(--bg-dark);
-  color: #e5e5e5;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -30,8 +51,8 @@ a {
 .top-nav {
   position: sticky;
   top: 0;
-  background-color: #050505;
-  border-bottom: 1px solid #222222;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
   z-index: 100;
 }
 
@@ -48,7 +69,7 @@ a {
 .logo {
   font-size: 22px;
   font-weight: bold;
-  color: #ffffff;
+  color: var(--heading);
 }
 
 .logo span {
@@ -73,8 +94,8 @@ a {
 
 .hero-hdr {
   padding: 60px 20px;
-  background-color: #121212;
-  border-bottom: 1px solid #222222;
+  background-color: var(--section-bg);
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
@@ -93,7 +114,7 @@ a {
 
 .sub-heading {
   display: inline-block;
-  background-color: #1a1a1a;
+  background-color: var(--card-bg);
   color: var(--gold);
   padding: 4px 12px;
   border-radius: 20px;
@@ -104,7 +125,7 @@ a {
 .intro-box h1 {
   font-size: 40px;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: var(--heading);
 }
 
 .highlight {
@@ -158,6 +179,22 @@ a {
   padding-bottom: 4px;
 }
 
+.proj-image {
+  display: flex;
+  gap: 10px
+}
+.proj-image img {
+  width: 230px;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+img:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px var(--gold);
+}
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -167,7 +204,7 @@ a {
 .about-card,
 .info-card {
   background-color: var(--card-bg);
-  border: 1px solid #222222;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 20px;
 }
@@ -185,7 +222,7 @@ a {
 }
 
 .info-card h3 {
-  color: #ffffff;
+  color: var(--heading);
   font-size: 18px;
   margin-bottom: 6px;
 }
@@ -199,7 +236,7 @@ a {
 
 .score-text {
   font-weight: bold;
-  color: #e5e5e5;
+  color: var(--text);
   font-size: 14px;
 }
 
@@ -213,11 +250,17 @@ a {
 
 .pill {
   background-color: var(--bg-dark);
-  border: 1px solid #222222;
+  border: 1px solid var(--border);
   color: var(--gold);
   font-size: 12px;
   padding: 3px 10px;
   border-radius: 4px;
+}
+
+.pill:hover{
+  transform: scale(1.05);
+  transition: 0.2s;
+  box-shadow: 0 0 2px;
 }
 
 .github-link {
@@ -231,7 +274,7 @@ a {
 
 .form-card {
   background-color: var(--card-bg);
-  border: 1px solid #222222;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 25px;
   max-width: 550px;
@@ -255,9 +298,9 @@ a {
   width: 100%;
   padding: 10px;
   background-color: var(--bg-dark);
-  border: 1px solid #222222;
+  border: 1px solid var(--border);
   border-radius: 4px;
-  color: #ffffff;
+  color: var(--input-text);
   font-family: Arial, sans-serif;
 }
 
@@ -285,12 +328,46 @@ a {
 .footer-sec {
   text-align: center;
   padding: 25px;
-  background-color: #050505;
-  border-top: 1px solid #222222;
+  background-color: var(--nav-bg);
+  border-top: 1px solid var(--border);
   color: var(--muted-text);
   font-size: 13px;
 }
 
+.theme-toggle-btn {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: inherit;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  outline: none;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
 @media (max-width: 768px) {
   .hero-inner {
     flex-direction: column-reverse;
