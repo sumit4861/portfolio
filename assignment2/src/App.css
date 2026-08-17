@@ -13,16 +13,16 @@
 }
 
 .light-theme {
-  --gold: #b8860b;
-  --bg-dark: #f5f5f5;
-  --card-bg: #ffffff;
-  --muted-text: #555555;
-  --nav-bg: #ffffff;
-  --section-bg: #eeeeee;
-  --border: #dddddd;
-  --text: #222222;
-  --heading: #111111;
-  --input-text: #222222;
+  --gold: #9a7209;
+  --bg-dark: #f4f1e8;
+  --card-bg: #ebe6d8;
+  --muted-text: #5f5b50;
+  --nav-bg: #e7e1d2;
+  --section-bg: #f0ede4;
+  --border: #d5cebd;
+  --text: #292821;
+  --heading: #181711;
+  --input-text: #292821;
   --button-text: #ffffff;
 }
 
@@ -46,6 +46,11 @@ body {
 a {
   color: var(--gold);
   text-decoration: none;
+}
+.app {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text);
 }
 
 .top-nav {
@@ -164,6 +169,7 @@ a {
   margin-left: auto;
   margin-right: auto;
   padding: 40px 20px;
+  background-color: var(--bg-dark);
 }
 
 .sec-padding {
@@ -207,6 +213,9 @@ img:hover {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 20px;
+}
+.about-card p {
+  color: var(--text);
 }
 
 .span-full {
@@ -326,6 +335,10 @@ img:hover {
 }
 
 .footer-sec {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
   text-align: center;
   padding: 25px;
   background-color: var(--nav-bg);

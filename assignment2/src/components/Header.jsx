@@ -1,4 +1,5 @@
 import myimg from '../assets/my.jpg'
+import { Link, useNavigate } from 'react-router-dom'
 function Header() {
   return (
     <>
@@ -7,7 +8,7 @@ function Header() {
           <div class="intro-box">
             <h1>Sumit <span class="highlight">Kumar Pathak</span></h1>
             <p>B.Tech CSE @ NIT Warangal | Aspiring Software Engineer | DSA & Full-Stack Development | NITW'28</p>
-            <a href="#projects" class="cta-btn">View Projects</a>
+            <Link to="/projects" className="cta-btn">View Projects</Link>
           </div>
           <div class="avatar-wrap">
             <img src={myimg} alt="Sumit profile image" class="my-photo" />
