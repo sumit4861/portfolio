@@ -6,6 +6,8 @@ function Contact() {
   })
 
   const [errors, setErrors] = useState({})
+  const [serverMessage, setServerMessage] = useState('')
+  const [serverError, setServerError] = useState('')
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -15,7 +17,7 @@ function Contact() {
   const validateForm = () => {
     const newErrors = {};
 
-    if(!formData.name.trim()) {
+    if(formData.name.trim() === '') {
       newErrors.name = 'Name is required'
     }
 
@@ -32,19 +34,53 @@ function Contact() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if(validateForm()) {
-      alert('Message submitted successfully')
-      setFormData({name: '', email: '', message: ''})
+    if (!validateForm()) {
+      return
+    }
+
+    setServerMessage('')
+    setServerError('')
+
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      setServerMessage(data.message)
+      setFormData({
+        name: '', email: '', message: ''
+      })
 
       setErrors({})
+    } catch (err) {
+      console.error(error)
+      setServerError(error.message)
     }
   }
   return (
     <section id="contact" className="sec-padding">
       <h2 className="sec-title">Get In Touch</h2>
+      {serverMessage && (
+        <p>{serverMessage}</p>
+      )}
+
+      {serverError && (
+        <p>{serverError}</p>
+      )}
+
       <form className="form-card" onSubmit={handleSubmit}>
         <div className="form-row">
           <label htmlFor="usr-name">Your Name</label>
@@ -56,6 +92,9 @@ function Contact() {
             value={formData.name}
             onChange={handleChange}
           />
+          {errors.name && (
+            <p className="errors">{errors.name}</p>
+          )}
         </div>
 
         <div className="form-row">
@@ -68,6 +107,9 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
           />
+          {errors.email && (
+            <p className="errors">{errors.email}</p>
+          )}
         </div>
 
         <div className="form-row">
@@ -80,13 +122,16 @@ function Contact() {
             value={formData.message}
             onChange={handleChange}
           ></textarea>
+          {errors.message && (
+            <p className="errors">{errors.message}</p>
+          )}
 
         </div>
 
         <button 
           type="submit" 
           className="btn-send" 
-          disabled={!formData.name.trim() || !formData.email.trim() || !formData.message.trim()}>Send Message</button>
+        >Send Message</button>
       </form>
     </section>
   )

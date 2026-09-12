@@ -43,6 +43,11 @@ body {
   line-height: 1.6;
 }
 
+.errors {
+  color: var(--gold);
+  align-items: center;
+}
+
 a {
   color: var(--gold);
   text-decoration: none;

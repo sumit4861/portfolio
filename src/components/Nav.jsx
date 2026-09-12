@@ -4,7 +4,7 @@ function Nav({theme, toggleTheme}) {
   return (
     <nav className="top-nav">
       <div className="nav-wrapper">
-        <Link to="/" className="nav-logo">Sumit<span>.</span></Link>
+        <Link to="/" className="nav-logo"><span>Sumit.</span></Link>
         <ul className="nav-menu">
           <li><Link to="/about">About</Link></li>
           <li><Link to="/education">Education</Link></li>

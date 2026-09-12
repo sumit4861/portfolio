@@ -20,8 +20,8 @@ function SubProject({project}) {
         
         {showDetails && (
           <div className="tech-pills">
-          <p className="proj-desc">{project.desc}</p>
-          {project.tech.split(",").map((tech) => (
+          <p className="proj-desc">{project.description}</p>
+          {project.techStack.split(",").map((tech) => (
             <span className="pill">{tech}</span>
           ))}
           <a href={project.link} target="_blank" rel="noopener noreferrer" className="github-link">GitHub Repo &rarr;</a>
